@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Essential Meta Tags -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rajib Lochan Baruah | Developer Portfolio</title>
+  <meta name="description" content="Portfolio of Rajib Lochan Baruah – Projects, education, and contact information.">
+  <meta name="keywords" content="Rajib Lochan Baruah, developer, portfolio, Assam University, IoT, Django, CSE, Python">
+  <meta name="author" content="Rajib Lochan Baruah">
+
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="Rajib Lochan Baruah Portfolio" />
+  <meta property="og:description" content="A colorful and responsive portfolio of Rajib Lochan Baruah." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://yourdomain.com/" />
+  <meta property="og:image" content="https://yourdomain.com/preview.png" />
+
+  <!-- Google Fonts & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-color: #f0f7ff;
+      --text-color: #222;
+      --section-bg: #ffffff;
+      --primary-color: #ff6f61;
+      --secondary-color: #4a90e2;
+      --accent-color-1: #f5a623;
+      --accent-color-2: #50e3c2;
+      --button-color: #7b61ff;
+      --button-hover: #6a50e3;
+    }
+
+    body.dark {
+      --bg-color: #121212;
+      --text-color: #eee;
+      --section-bg: #1e1e1e;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color-1));
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    nav {
+      background: var(--secondary-color);
+      text-align: center;
+      padding: 12px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent-color-2);
+    }
+
+    .section {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 40px 30px;
+      background: var(--section-bg);
+      border-radius: 12px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+
+    .portfolio-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .portfolio-item {
+      background: var(--bg-color);
+      border: 2px solid var(--accent-color-2);
+      border-radius: 10px;
+      width: 300px;
+      padding: 20px;
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .portfolio-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .portfolio-item h3 {
+      color: var(--secondary-color);
+    }
+
+    .portfolio-item a {
+      color: var(--button-color);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .portfolio-item a:hover {
+      text-decoration: underline;
+    }
+
+    .education-item {
+      border-left: 5px solid var(--accent-color-1);
+      margin-bottom: 20px;
+      padding-left: 20px;
+    }
+
+    input, textarea {
+      width: 80%;
+      max-width: 500px;
+      padding: 10px;
+      margin-top: 10px;
+      border: 2px solid var(--primary-color);
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: var(--button-color);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 5px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: var(--button-hover);
+    }
+
+    #formStatus {
+      margin-top: 10px;
+      font-weight: bold;
+      color: var(--accent-color-2);
+    }
+
+    .dark-toggle, .music-toggle {
+      position: fixed;
+      background: var(--secondary-color);
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .dark-toggle {
+      top: 20px;
+      right: 20px;
+    }
+
+    .music-toggle {
+      bottom: 20px;
+      left: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .portfolio-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav a {
+        margin: 0 10px;
+      }
+
+      input, textarea {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Theme & Music Buttons -->
+  <button class="dark-toggle" onclick="toggleDarkMode()">🌙</button>
+  <button class="music-toggle" onclick="toggleMusic()">🎶</button>
+  <audio id="bg-music" loop>
+    <source src="your-music-file.mp3" type="audio/mp3" />
+  </audio>
+
+  <!-- Header -->
+  <header>
+    <h1>RAJIB LOCHAN BARUAH</h1>
+    <h2>Welcome to My Website</h2>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#education">Education</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- About Section -->
+  <div id="about" class="section">
+    <h2><i class="fas fa-user"></i> About Me</h2>
+    <p>Hello! I'm Rajib Lochan Baruah</p>
+    <button onclick="changeMessage()">Click for Surprise</button>
+    <p id="message">Click the button to see what happens!</p>
+  </div>
+
+  <!-- Portfolio Section -->
+  <div id="portfolio" class="section">
+    <h2><i class="fas fa-briefcase"></i> Portfolio</h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-item">
+        <h3><i class="fas fa-recycle"></i> Smart Waste Monitoring</h3>
+        <p>Using IoT to improve waste collection efficiency.</p>
+        <a href="https://example.com/project1" target="_blank">View Demo</a>
+      </div>
+      <div class="portfolio-item">
+        <h3><i class="fas fa-heartbeat"></i> Heart-Rate Monitoring</h3>
+        <p>Monitors pulse data in real-time using sensors.</p>
+        <a href="https://example.com/project2" target="_blank">View Demo</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Education Section -->
+  <div id="education" class="section">
+    <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+    <div class="education-item">
+      <h3>B.Tech in CSE</h3>
+      <p><strong>Assam University</strong> – 2020 to 2024</p>
+      <p>Focused on web development and software engineering.</p>
+    </div>
+    <div class="education-item">
+      <h3>Schooling</h3>
+      <p><strong>JNV</strong> – 2013 to 2020</p>
+      <p>Strong foundation in math and science.</p>
+    </div>
+    <div class="education-item">
+      <h3>Training</h3>
+      <p><strong>NIELIT</strong> – Python & Django (2022)</p>
+    </div>
+    <div class="education-item">
+      <h3>Internship</h3>
+      <p><strong>AMTRON</strong> – IoT & Data Analysis (2023)</p>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <div id="contact" class="section">
+    <h2><i class="fas fa-envelope"></i> Contact Me</h2>
+    <form id="contact-form" action="https://formspree.io/f/mkgbzwgg" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="_replyto" placeholder="Your Email" required />
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <p id="formStatus"></p>
+  </div>
+
+  <script>
+    // Dark mode toggle
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+    }
+
+    // Music toggle
+    function toggleMusic() {
+      const music = document.getElementById("bg-music");
+      if (music.paused) music.play();
+      else music.pause();
+    }
+
+    // Surprise message button
+    function changeMessage() {
+      document.getElementById("message").textContent = "🎉 Thanks for clicking!";
+    }
+
+    // Contact form handling
+    const form = document.getElementById('contact-form');
+    const formStatus = document.getElementById('formStatus');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const data = new FormData(form);
+      fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: {
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          formStatus.textContent = "Thank you! Your message has been sent.";
+          form.reset();
+        } else {
+          response.json().then(data => {
+            if (Object.hasOwn(data, 'errors')) {
+              formStatus.textContent = data["errors"].map(error => error["message"]).join(", ");
+            } else {
+              formStatus.textContent = "Oops! There was a problem submitting your form.";
+            }
+          });
+        }
+      }).catch(() => {
+        formStatus.textContent = "Oops! There was a problem submitting your form.";
+      });
+    });
+
+    // Scroll reveal animation with debounce
+    const sections = document.querySelectorAll(".section");
+    let scrollTimeout;
+    function revealOnScroll() {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const triggerBottom = window.innerHeight * 0.85;
+        sections.forEach(section => {
+          const boxTop = section.getBoundingClientRect().top;
+          if (boxTop < triggerBottom) {
+            section.classList.add("visible");
+          }
+        });
+      }, 100);
+    }
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
+  </script>
+
+</body>
+</html>
