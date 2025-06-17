@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Colorful Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #fdf6f0;
+      --text-color: #333;
+      --section-bg: #ffffff;
+      --primary-color: #ff6b6b;
+      --secondary-color: #4dabf7;
+      --button-color: #f06595;
+      --button-hover: #d6336c;
+      --accent1: #ffd43b;
+      --accent2: #69db7c;
+      --accent3: #845ef7;
+    }
+
+    body.dark {
+      --bg-color: #121212;
+      --text-color: #f0f0f0;
+      --section-bg: #1e1e1e;
+      --primary-color: #f783ac;
+      --secondary-color: #74c0fc;
+      --button-color: #be4bdb;
+      --button-hover: #9c36b5;
+      --accent1: #ffe066;
+      --accent2: #8ce99a;
+      --accent3: #d0bfff;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      background-color: var(--secondary-color);
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    .section {
+      background: var(--section-bg);
+      border-radius: 12px;
+      margin: 20px auto;
+      padding: 50px;
+      max-width: 1000px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #about {
+      background: linear-gradient(135deg, var(--primary-color), var(--accent1));
+      color: white;
+    }
+
+    #portfolio {
+      background: linear-gradient(135deg, var(--accent2), var(--secondary-color));
+    }
+
+    #education {
+      background: linear-gradient(135deg, var(--accent3), var(--primary-color));
+      color: white;
+    }
+
+    #image {
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    }
+
+    #contact {
+      background: linear-gradient(135deg, var(--secondary-color), var(--button-color));
+      color: white;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+    button, .resume-button {
+      background-color: var(--button-color);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 10px 20px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0,0,0,0.15);
+      transition: 0.3s ease;
+    }
+
+    button:hover, .resume-button:hover {
+      background-color: var(--button-hover);
+      box-shadow: 0 0 20px var(--button-hover);
+    }
+
+    .portfolio-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .portfolio-item {
+      background: white;
+      color: #333;
+      padding: 15px;
+      border-radius: 8px;
+      width: 300px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+
+    .portfolio-item img {
+      width: 100%;
+      border-radius: 5px;
+    }
+
+    .portfolio-item a {
+      display: inline-block;
+      margin-top: 10px;
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .portfolio-item a:hover {
+      text-decoration: underline;
+    }
+
+    .dark-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .collapse {
+      display: none;
+      margin: 10px 0 20px;
+      background: white;
+      color: #000;
+      padding: 15px;
+      border-left: 4px solid var(--primary-color);
+      border-radius: 5px;
+    }
+
+    button[onclick^="toggleCollapse"] {
+      width: 100%;
+      max-width: 600px;
+      margin: 10px auto;
+      padding: 12px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      text-align: left;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    form input, form textarea {
+      width: 90%;
+      max-width: 500px;
+      margin: 10px auto;
+      display: block;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    .resume-button {
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <button class="dark-toggle" onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+
+  <header>
+    <h1>Welcome to My Colorful Portfolio</h1>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#education">Education</a>
+    <a href="#image">Image</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div id="about" class="section">
+    <h2>About Me</h2>
+    <p>Hello! I'm learning web development and building my first colorful website! 🚀</p>
+    <button onclick="changeMessage()">Click for Surprise</button>
+    <p id="message">Click the button to see what happens!</p>
+  </div>
+
+  <div id="portfolio" class="section">
+    <h2>My Portfolio</h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-item">
+        <img src="https://picsum.photos/300/200?random=1" alt="Project 1">
+        <h3>To-Do App</h3>
+        <p>Simple task manager using vanilla JavaScript.</p>
+        <a href="#">View Demo</a>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://picsum.photos/300/200?random=2" alt="Project 2">
+        <h3>Responsive Blog</h3>
+        <p>HTML and CSS blog template with grid layout.</p>
+        <a href="#">View Demo</a>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://picsum.photos/300/200?random=3" alt="Project 3">
+        <h3>Weather App</h3>
+        <p>JavaScript app using OpenWeather API.</p>
+        <a href="#">View Demo</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="education" class="section">
+    <h2>My Education</h2>
+
+    <button onclick="toggleCollapse('edu1')">🎓 B.Sc. in Computer Science (2019–2023)</button>
+    <div id="edu1" class="collapse">
+      <p><strong>XYZ University</strong></p>
+      <p>Graduated with distinction. Web development, data structures, and software engineering.</p>
+    </div>
+
+    <button onclick="toggleCollapse('edu2')">🏫 High School (2017–2019)</button>
+    <div id="edu2" class="collapse">
+      <p><strong>ABC High School</strong></p>
+      <p>Science stream with a strong foundation in math and physics.</p>
+    </div>
+
+    <h3>📜 Certifications</h3>
+
+    <button onclick="toggleCollapse('cert1')">💻 Web Development Bootcamp</button>
+    <div id="cert1" class="collapse">
+      <p><strong>Udemy</strong> – 2022</p>
+      <p>HTML, CSS, JavaScript, Node.js, and React.</p>
+    </div>
+
+    <button onclick="toggleCollapse('cert2')">📊 Data Analysis with Python</button>
+    <div id="cert2" class="collapse">
+      <p><strong>Coursera</strong> – 2021</p>
+      <p>Data analysis, NumPy, Pandas, and visualization.</p>
+    </div>
+
+    <a href="resume.pdf" download class="resume-button">📄 Download My Resume</a>
+  </div>
+
+  <div id="image" class="section">
+    <h2>Favorite Image</h2>
+    <img src="https://picsum.photos/600/300" alt="Random Image">
+  </div>
+
+  <div id="contact" class="section">
+    <h2>Contact Me</h2>
+    <form onsubmit="submitForm(event)">
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="email" id="email" placeholder="Your Email" required />
+      <textarea id="messageBox" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    <p id="formStatus"></p>
+  </div>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+    }
+
+    function changeMessage() {
+      document.getElementById("message").textContent = "🎉 Thanks for clicking!";
+    }
+
+    function toggleCollapse(id) {
+      const element = document.getElementById(id);
+      element.style.display = element.style.display === "block" ? "none" : "block";
+    }
+
+    function submitForm(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      document.getElementById("formStatus").textContent = `Thanks, ${name}! Your message has been sent. ✅`;
+    }
+
+    const sections = document.querySelectorAll(".section");
+    function revealOnScroll() {
+      const triggerBottom = window.innerHeight * 0.85;
+      sections.forEach(section => {
+        const boxTop = section.getBoundingClientRect().top;
+        if (boxTop < triggerBottom) {
+          section.classList.add("visible");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", revealOnScroll);
+    window.addEventListener("load", revealOnScroll);
+  </script>
+
+</body>
+</html>
