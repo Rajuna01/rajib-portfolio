@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Rajib Lochan Baruah – Web & IoT Developer Portfolio">
+  <meta name="keywords" content="Rajib, Portfolio, IoT, Web Developer, CSE, Projects">
+  <meta name="author" content="Rajib Lochan Baruah">
   <title>Rajib Lochan Baruah | Developer Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
@@ -82,10 +85,25 @@
       border-radius: 8px;
       background: #f9f9f9;
     }
+    .portfolio-item a {
+      display: inline-block;
+      margin-top: 10px;
+      color: var(--primary-color);
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .portfolio-item a:hover {
+      color: var(--accent-color);
+    }
     .education-item {
       border-left: 4px solid var(--accent-color);
       padding-left: 15px;
       margin-bottom: 20px;
+    }
+    .list-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
     }
     input, textarea {
       width: 100%;
@@ -127,7 +145,7 @@
   <header>
     <img src="preview.png.jpg" alt="Profile Picture">
     <h1>RAJIB LOCHAN BARUAH</h1>
-    <h2>Welcome to My Website</h2>
+    <h2 id="typing-text"></h2>
     <a href="resume.pdf" class="resume-btn" target="_blank"><i class="fas fa-file-alt"></i> View Resume</a>
   </header>
 
@@ -135,26 +153,31 @@
     <a href="#about">About</a>
     <a href="#portfolio">Portfolio</a>
     <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#certificates">Certificates</a>
     <a href="#contact">Contact</a>
   </nav>
 
   <section id="about" class="section">
     <h2><i class="fas fa-user"></i> About Me</h2>
-    <p>Hello! I'm Rajib Lochan Baruah, passionate about web development, IoT, and software engineering.</p>
+    <p>I'm Rajib Lochan Baruah, a Computer Science & Engineering graduate from Assam University. I'm deeply passionate about IoT, web development, and software engineering. I enjoy building solutions that blend hardware with intuitive software interfaces. Fluent in English, Hindi, Assamese, and Bengali. Based in Assam, India.</p>
   </section>
 
   <section id="portfolio" class="section">
     <h2><i class="fas fa-briefcase"></i> Portfolio</h2>
     <div class="portfolio-grid">
       <div class="portfolio-item">
-        <h3>Smart Waste Monitoring</h3>
-        <p>IoT-based project to optimize waste collection systems.</p>
-        <a href="#">View Demo</a>
+        <h3>Heart Rate Monitoring System</h3>
+        <p>An IoT-based real-time pulse monitoring solution using sensors and NodeMCU to display heart data.</p>
+        <a href="#">Live Demo</a>
+        <a href="#"><i class="fab fa-github"></i> GitHub</a>
       </div>
       <div class="portfolio-item">
-        <h3>Heart-Rate Monitoring</h3>
-        <p>Monitors pulse using sensor data in real-time.</p>
-        <a href="#">View Demo</a>
+        <h3>Smart Garbage Management System</h3>
+        <p>Designed a sensor-based waste bin that monitors garbage levels and uploads data to Firebase in real-time.</p>
+        <a href="#">Live Demo</a>
+        <a href="#"><i class="fab fa-github"></i> GitHub</a>
       </div>
     </div>
   </section>
@@ -162,21 +185,50 @@
   <section id="education" class="section">
     <h2><i class="fas fa-graduation-cap"></i> Education</h2>
     <div class="education-item">
-      <h3>B.Tech in CSE</h3>
+      <h3>B.Tech in Computer Science & Engineering</h3>
       <p>Assam University, 2020–2024</p>
     </div>
     <div class="education-item">
-      <h3>Schooling</h3>
-      <p>JNV, 2013–2020</p>
+      <h3>Senior Secondary (Class 12)</h3>
+      <p>JNV, Kalaigaon, 2020</p>
     </div>
     <div class="education-item">
-      <h3>Training</h3>
-      <p>NIELIT – Python & Django (2022)</p>
+      <h3>Secondary (Class 10)</h3>
+      <p>Srimanta Sankardev Vidyalaya, 2018</p>
+    </div>
+  </section>
+
+  <section id="skills" class="section">
+    <h2><i class="fas fa-tools"></i> Skills</h2>
+    <div class="list-grid">
+      <div>Python</div>
+      <div>C / C++</div>
+      <div>SQL</div>
+      <div>IoT & Embedded Systems</div>
+      <div>Machine Learning (Basics)</div>
+      <div>Django</div>
+      <div>Firebase</div>
+    </div>
+  </section>
+
+  <section id="experience" class="section">
+    <h2><i class="fas fa-briefcase"></i> Experience</h2>
+    <div class="education-item">
+      <h3>Intern - Web Development with Django</h3>
+      <p>NIELIT (2022)</p>
     </div>
     <div class="education-item">
-      <h3>Internship</h3>
-      <p>AMTRON – IoT & Data Analysis (2023)</p>
+      <h3>Intern - IoT & Data Analysis</h3>
+      <p>AMTRON (2023)</p>
     </div>
+  </section>
+
+  <section id="certificates" class="section">
+    <h2><i class="fas fa-certificate"></i> Certificates</h2>
+    <ul>
+      <li>Python and Django – NIELIT (2022)</li>
+      <li>IoT & Data Analysis – AMTRON (2023)</li>
+    </ul>
   </section>
 
   <section id="contact" class="section">
@@ -204,22 +256,23 @@
       sections.forEach(section => section.classList.add("visible"));
     });
 
-    const form = document.getElementById('contact-form');
-    const formStatus = document.getElementById('formStatus');
-    form.addEventListener('submit', function(event) {
-      event.preventDefault();
-      const data = new FormData(form);
-      fetch(form.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      }).then(response => {
-        formStatus.textContent = response.ok ? "Thank you! Your message has been sent." : "Oops! There was a problem submitting your form.";
-        if (response.ok) form.reset();
-      }).catch(() => {
-        formStatus.textContent = "Oops! There was a problem submitting your form.";
-      });
-    });
+    const texts = ["Welcome to My Website", "I'm a Developer", "I love IoT & Web Dev"];
+    let i = 0, j = 0, isDeleting = false;
+    function type() {
+      const current = texts[i];
+      const display = document.getElementById("typing-text");
+      display.textContent = current.substring(0, j);
+      if (!isDeleting && j < current.length) {
+        j++;
+      } else if (isDeleting && j > 0) {
+        j--;
+      } else {
+        isDeleting = !isDeleting;
+        if (!isDeleting) i = (i + 1) % texts.length;
+      }
+      setTimeout(type, isDeleting ? 50 : 100);
+    }
+    window.addEventListener("load", type);
   </script>
 </body>
 </html>
