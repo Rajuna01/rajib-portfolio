@@ -4,32 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rajib Lochan Baruah | Developer Portfolio</title>
-  <meta name="description" content="Portfolio of Rajib Lochan Baruah – Projects, education, and contact information.">
-  <meta name="keywords" content="Rajib Lochan Baruah, developer, portfolio, Assam University, IoT, Django, CSE, Python">
-  <meta name="author" content="Rajib Lochan Baruah">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
-
   <style>
     :root {
-      --bg-color: #f0f7ff;
-      --text-color: #222;
-      --section-bg: #ffffff;
-      --primary-color: #ff6f61;
-      --secondary-color: #4a90e2;
-      --accent-color-1: #f5a623;
-      --accent-color-2: #50e3c2;
-      --button-color: #7b61ff;
-      --button-hover: #6a50e3;
+      --bg-color: #f4f8fb;
+      --text-color: #1a1a1a;
+      --section-bg: #fff;
+      --primary-color: #4a90e2;
+      --accent-color: #ff6f61;
+      --button-color: #4a90e2;
+      --button-hover: #3c7dc3;
     }
-
-    body.dark {
-      --bg-color: #121212;
-      --text-color: #eee;
-      --section-bg: #1e1e1e;
-    }
-
     body {
       margin: 0;
       font-family: 'Quicksand', sans-serif;
@@ -37,129 +23,78 @@
       color: var(--text-color);
       scroll-behavior: smooth;
     }
-
-    #hero {
+    header {
       text-align: center;
-      padding: 50px 20px;
-      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      padding: 60px 20px 40px;
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
       color: white;
     }
-
-    #hero img {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
+    header img {
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
-      border: 4px solid white;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      border: 4px solid #fff;
       margin-bottom: 20px;
     }
-
-    #hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-
-    #hero p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
     nav {
-      background: var(--secondary-color);
+      background: var(--primary-color);
       text-align: center;
-      padding: 12px 0;
+      padding: 10px 0;
       position: sticky;
       top: 0;
       z-index: 1000;
     }
-
     nav a {
       color: white;
       text-decoration: none;
       margin: 0 15px;
       font-weight: bold;
-      font-size: 1.1rem;
-      transition: color 0.3s;
     }
-
     nav a:hover {
-      color: var(--accent-color-2);
+      color: var(--accent-color);
     }
-
     .section {
-      max-width: 1000px;
-      margin: 30px auto;
-      padding: 40px 30px;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 30px;
       background: var(--section-bg);
-      border-radius: 12px;
+      border-radius: 10px;
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.6s ease-out;
     }
-
     .section.visible {
       opacity: 1;
       transform: translateY(0);
     }
-
     h2 {
       color: var(--primary-color);
-      margin-bottom: 20px;
     }
-
     .portfolio-grid {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
       gap: 20px;
     }
-
     .portfolio-item {
-      background: var(--bg-color);
-      border: 2px solid var(--accent-color-2);
-      border-radius: 10px;
-      width: 300px;
+      flex: 1 1 250px;
+      border: 1px solid #ddd;
       padding: 20px;
-      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s;
+      border-radius: 8px;
+      background: #f9f9f9;
     }
-
-    .portfolio-item:hover {
-      transform: translateY(-5px);
-    }
-
-    .portfolio-item h3 {
-      color: var(--secondary-color);
-    }
-
-    .portfolio-item a {
-      color: var(--button-color);
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .portfolio-item a:hover {
-      text-decoration: underline;
-    }
-
     .education-item {
-      border-left: 5px solid var(--accent-color-1);
+      border-left: 4px solid var(--accent-color);
+      padding-left: 15px;
       margin-bottom: 20px;
-      padding-left: 20px;
     }
-
     input, textarea {
-      width: 80%;
+      width: 100%;
       max-width: 500px;
       padding: 10px;
       margin-top: 10px;
-      border: 2px solid var(--primary-color);
+      border: 1px solid #ccc;
       border-radius: 5px;
-      font-size: 1rem;
     }
-
     button {
       background-color: var(--button-color);
       color: white;
@@ -170,83 +105,81 @@
       margin-top: 10px;
       cursor: pointer;
     }
-
     button:hover {
       background-color: var(--button-hover);
     }
-
-    @media (max-width: 600px) {
-      #hero img {
-        width: 100px;
-        height: 100px;
-      }
-      #hero h1 {
-        font-size: 1.8rem;
-      }
-      #hero p {
-        font-size: 1rem;
-      }
+    .resume-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: var(--accent-color);
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .resume-btn:hover {
+      background: #e35a4b;
     }
   </style>
 </head>
 <body>
-  <section id="hero">
-    <img src="preview.png.jpg" alt="Rajib Lochan Baruah">
-    <h1>Hi, I'm <span style="color: #ffd700;">Rajib Lochan Baruah</span></h1>
-    <p>Passionate web developer and CSE graduate with a strong interest in full-stack development and problem-solving.</p>
-  </section>
+  <header>
+    <img src="preview.png.jpg" alt="Profile Picture">
+    <h1>RAJIB LOCHAN BARUAH</h1>
+    <h2>Welcome to My Website</h2>
+    <a href="resume.pdf" class="resume-btn" target="_blank"><i class="fas fa-file-alt"></i> View Resume</a>
+  </header>
 
   <nav>
+    <a href="#about">About</a>
     <a href="#portfolio">Portfolio</a>
     <a href="#education">Education</a>
-    <a href="#about">About</a>
     <a href="#contact">Contact</a>
   </nav>
 
-  <div id="about" class="section">
+  <section id="about" class="section">
     <h2><i class="fas fa-user"></i> About Me</h2>
-    <p>Hello! I'm Rajib Lochan Baruah</p>
-  </div>
+    <p>Hello! I'm Rajib Lochan Baruah, passionate about web development, IoT, and software engineering.</p>
+  </section>
 
-  <div id="portfolio" class="section">
+  <section id="portfolio" class="section">
     <h2><i class="fas fa-briefcase"></i> Portfolio</h2>
     <div class="portfolio-grid">
       <div class="portfolio-item">
-        <h3><i class="fas fa-recycle"></i> Smart Waste Monitoring</h3>
-        <p>Using IoT to improve waste collection efficiency.</p>
-        <a href="#" target="_blank">View Demo</a>
+        <h3>Smart Waste Monitoring</h3>
+        <p>IoT-based project to optimize waste collection systems.</p>
+        <a href="#">View Demo</a>
       </div>
       <div class="portfolio-item">
-        <h3><i class="fas fa-heartbeat"></i> Heart-Rate Monitoring</h3>
-        <p>Monitors pulse data in real-time using sensors.</p>
-        <a href="#" target="_blank">View Demo</a>
+        <h3>Heart-Rate Monitoring</h3>
+        <p>Monitors pulse using sensor data in real-time.</p>
+        <a href="#">View Demo</a>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div id="education" class="section">
+  <section id="education" class="section">
     <h2><i class="fas fa-graduation-cap"></i> Education</h2>
     <div class="education-item">
       <h3>B.Tech in CSE</h3>
-      <p><strong>Assam University</strong> – 2020 to 2024</p>
-      <p>Focused on web development and software engineering.</p>
+      <p>Assam University, 2020–2024</p>
     </div>
     <div class="education-item">
       <h3>Schooling</h3>
-      <p><strong>JNV</strong> – 2013 to 2020</p>
-      <p>Strong foundation in math and science.</p>
+      <p>JNV, 2013–2020</p>
     </div>
     <div class="education-item">
       <h3>Training</h3>
-      <p><strong>NIELIT</strong> – Python & Django (2022)</p>
+      <p>NIELIT – Python & Django (2022)</p>
     </div>
     <div class="education-item">
       <h3>Internship</h3>
-      <p><strong>AMTRON</strong> – IoT & Data Analysis (2023)</p>
+      <p>AMTRON – IoT & Data Analysis (2023)</p>
     </div>
-  </div>
+  </section>
 
-  <div id="contact" class="section">
+  <section id="contact" class="section">
     <h2><i class="fas fa-envelope"></i> Contact Me</h2>
     <form id="contact-form" action="https://formspree.io/f/mkgbzwgg" method="POST">
       <input type="text" name="name" placeholder="Your Name" required />
@@ -255,9 +188,22 @@
       <button type="submit">Send Message</button>
     </form>
     <p id="formStatus"></p>
-  </div>
+  </section>
 
   <script>
+    const sections = document.querySelectorAll(".section");
+    window.addEventListener("scroll", () => {
+      const trigger = window.innerHeight * 0.85;
+      sections.forEach(section => {
+        if (section.getBoundingClientRect().top < trigger) {
+          section.classList.add("visible");
+        }
+      });
+    });
+    window.addEventListener("load", () => {
+      sections.forEach(section => section.classList.add("visible"));
+    });
+
     const form = document.getElementById('contact-form');
     const formStatus = document.getElementById('formStatus');
     form.addEventListener('submit', function(event) {
@@ -268,22 +214,12 @@
         body: data,
         headers: { 'Accept': 'application/json' }
       }).then(response => {
-        formStatus.textContent = response.ok ? "Thank you! Your message has been sent." : "Oops! There was a problem.";
+        formStatus.textContent = response.ok ? "Thank you! Your message has been sent." : "Oops! There was a problem submitting your form.";
         if (response.ok) form.reset();
+      }).catch(() => {
+        formStatus.textContent = "Oops! There was a problem submitting your form.";
       });
     });
-
-    const sections = document.querySelectorAll(".section");
-    window.addEventListener("scroll", () => {
-      const triggerBottom = window.innerHeight * 0.85;
-      sections.forEach(section => {
-        const boxTop = section.getBoundingClientRect().top;
-        if (boxTop < triggerBottom) {
-          section.classList.add("visible");
-        }
-      });
-    });
-    window.dispatchEvent(new Event('scroll'));
   </script>
 </body>
 </html>
